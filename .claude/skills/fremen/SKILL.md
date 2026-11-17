@@ -1,46 +1,83 @@
-# Fremen — Initial Core Implementation
 
-We are building Fremen, a modular educational-platform browser automation framework.
+---
+name: fremen
+description: Develops and maintains Fremen, a modular browser automation framework for educational platforms including Mathia, Edpuzzle, and Newsela. Use when implementing core functionality, browser automation, platform integrations, debugging, or testing.
+---
 
-## Objective
+# Fremen Development Skill
 
-Implement the initial Fremen Core and reusable browser infrastructure.
+## Project Identity
 
-## Requirements
+Fremen is a modular browser automation framework.
 
-1. Create a `BrowserManager` class responsible for browser lifecycle management.
-2. Create a `BrowserSession` abstraction for managing an active browser session.
-3. Create a `PageInspector` class that can:
-   - Retrieve the current page URL.
-   - Retrieve the page title.
-   - Capture a screenshot.
-   - Retrieve the accessibility snapshot using supported Playwright APIs.
-   - Extract visible headings, links, and buttons.
-4. Create a `Platform` interface for future integrations.
-5. Create a `Fremen` entry point that coordinates the browser and platform modules.
-6. Implement structured logging.
-7. Add Vitest tests for the core components.
-8. Use TypeScript with strict type checking.
-9. Handle browser launch failures and disconnected sessions gracefully.
-10. Document the architecture in README.md.
+Its purpose is to provide reusable browser infrastructure
+and platform-specific integrations.
 
 ## Architecture
 
-- `src/core/`
-- `src/browser/`
-- `src/platforms/`
-- `src/utils/`
-- `tests/`
+- Core: Framework orchestration and platform interfaces.
+- Browser: Browser lifecycle, sessions, and inspection.
+- Platforms: Individual platform integrations.
+- Agents: Agent-specific functionality.
+- Utils: Logging, errors, and shared utilities.
+- Tests: Automated testing.
 
-## Constraints
+## Supported Platforms
 
-- Do not implement Mathia-specific functionality yet.
-- Do not implement credential collection or automated login.
-- Do not hardcode browser credentials.
-- Do not introduce unnecessary dependencies.
-- Do not modify existing Git remotes or repository history.
-- Do not commit changes automatically.
+1. Carnegie Learning Mathia
+2. Edpuzzle
+3. Newsela
 
-## Deliverables
+## Development Principles
 
-A functional, tested Fremen Core that can launch a browser, inspect a page, and close the browser cleanly.
+- Use TypeScript.
+- Prefer modular, reusable implementations.
+- Maintain strict type safety.
+- Avoid unnecessary dependencies.
+- Use Playwright for browser automation.
+- Use accessibility-based locators whenever possible.
+- Handle asynchronous operations correctly.
+- Implement structured error handling.
+- Write tests for new functionality.
+
+## Browser Rules
+
+- Inspect pages before interacting.
+- Prefer accessible names and semantic locators.
+- Never assume selectors are stable without verification.
+- Preserve authenticated sessions securely.
+- Never expose cookies, tokens, or credentials.
+
+## Platform Integration Rules
+
+Every platform integration should:
+
+- Implement the shared Platform interface.
+- Keep platform-specific logic isolated.
+- Support page inspection.
+- Handle navigation and unexpected page states.
+- Document known interface behavior.
+
+## Safety
+
+- Do not bypass authentication or access controls.
+- Do not manipulate grades or progress records.
+- Do not secretly submit graded work.
+- Keep user credentials private.
+- Require authorization for consequential actions.
+
+## Git
+
+- Never overwrite the user's existing Git configuration.
+- Never force-push.
+- Never commit without explicit permission.
+- Keep secrets and browser profiles out of version control.
+
+## Development Workflow
+
+1. Inspect the existing implementation.
+2. Understand the relevant architecture.
+3. Plan changes before implementing them.
+4. Implement the smallest appropriate solution.
+5. Run relevant tests.
+6. Report changed files and test results.
